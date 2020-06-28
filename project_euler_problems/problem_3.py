@@ -3,7 +3,6 @@
 # What is the largest prime factor of the number 600851475143 ?
 
 import sys
-import time
 class Node(object):
     def __init__(self, number, factor_one_node=None, factor_two_node=None):
         self.val = number
@@ -41,10 +40,7 @@ class Solution(object):
 
 def main():
     target_num = int(sys.argv[1])
-    start = time.perf_counter()
     largest_prime = Solution.largest_prime_number(target_num)
-    end = time.perf_counter()
-    print("My time {perf}".format(perf=start-end))
     print(largest_prime)
 
 
