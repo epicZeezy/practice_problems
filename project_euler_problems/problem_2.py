@@ -4,7 +4,7 @@
 #
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 import sys
-
+import time
 class Solution(object):
 
     @staticmethod
@@ -23,8 +23,11 @@ def main():
     threshold = int(sys.argv[1])
     first_num = int(sys.argv[2])
     second_num = int(sys.argv[3])
+    start = time.perf_counter()
     solution = Solution.generate_fibonacci_even(threshold, first_num, second_num)
+    end = time.perf_counter()
     print(solution)
+    print(start - end)
 
 
 main()
