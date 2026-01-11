@@ -15,11 +15,12 @@ def find_longest_substring_t(word, t=2):
     # Set to track window duplicates
     # For each window check length of set. If bigger than t/2, then move start index up and index up till end index is equal to length
     if len(word) <= t:
-        return len(word)
+        return len(word)  #O(1)
     start = 0
     end = 2
     max_length = float('-inf')
-    # eceba
+    # O(N) storage because it's all in the set. Max 2 each but that's a constant
+    #  O(N) time complexity. Always constant times length of word. Where N is the word length
     while start < end and end <= len(word):                                           # ba
         sub_word = word[start:end]                                      
         tracker = set(sub_word)                                 # {e, b, a}
@@ -39,9 +40,9 @@ assert find_longest_substring_t("abcdefgh") == 2
 '''
 Understand: Need to find subtring with only two unique characters
 Match: Two pointer/Sliding window + Set approach. Set Keeps track of characters for each window
-Plan
-Implement
-Review
-Evaluate
+Plan Done
+Implement Done
+Review Done
+Evaluate. Time Complexity:
 
 '''
