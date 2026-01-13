@@ -58,7 +58,8 @@ Understand: Row is sorted in ascending order. First column is always sorted. Nee
 Match: Binary Search Because we have sorting properties
 Plan Done. Using binary search on first column and then using it on entire row
 Implement. Done
-Review. Tests look good so far
-Evaluate
+Review. Tests look good so far. We've tested matrix with one length, nothing exists, and number is in first column and number is in a row
+Evaluate. Time Complexity: Log c where c is number of rows for first sort. Then we limit rows we look at, but could be all of them. So number rows * Log R where is length of rows
+Log C + number_rows(Log Length of row). So number_rows (Log length of row). Worst case if we have to look at everything it's Log (number rows * length of row)
 
 '''
