@@ -9,29 +9,50 @@ Given n non-negative integers representing an elevation map where the width of e
 def trap(height: List[int]) -> int:
     # How do we know if the water is traped?
     # The left max is higher and the right max is higher:
-    current_max = 0
-    index_to_max_height = {}
-    for index, index_height in enumerate(height):
-        if index_height > current_max:
-            index_to_max_height[index] = [index_height, None]
-            current_max = index_height
+    # Two pointer approach
+    left_ptr = 0
+    right_ptr = len(height) - 1
+    left_max = 0
+    right_max = 0
+    total_rain = 0
+    while left_ptr <= right_ptr:
+        if height[left_ptr] < height[right_ptr]:
+            if height[left_ptr] >= left_max:
+                left_max = height[left_ptr]
+            else:
+                total_rain += left_max - height[left_ptr]
+            left_ptr += 1
         else:
-            index_to_max_height[index] = [current_max, None]
+            if height[right_ptr] >= right_max:
+                right_max = height[right_ptr]
+            else:
+                total_rain += right_max - height[right_ptr]
+            right_ptr -= 1
+    return total_rain
+    # Two loop brute force approach
+    # current_max = 0
+    # index_to_max_height = {}
+    # for index, index_height in enumerate(height):
+    #     if index_height > current_max:
+    #         index_to_max_height[index] = [index_height, None]
+    #         current_max = index_height
+    #     else:
+    #         index_to_max_height[index] = [current_max, None]
     
-    current_max = 0
-    for i in range(len(height) -1, -1, -1):
-        index_height = height[i]
-        if index_height > current_max:
-            index_to_max_height[i][1] = index_height
-            current_max = index_height
-        else:
-            index_to_max_height[i][1] = current_max
-    total_water = 0
-    for height_index, left_right_max in index_to_max_height.items():
-        current_height = height[height_index]
-        water_trapped = min(left_right_max) - current_height
-        total_water += water_trapped
-    return total_water
+    # current_max = 0
+    # for i in range(len(height) -1, -1, -1):
+    #     index_height = height[i]
+    #     if index_height > current_max:
+    #         index_to_max_height[i][1] = index_height
+    #         current_max = index_height
+    #     else:
+    #         index_to_max_height[i][1] = current_max
+    # total_water = 0
+    # for height_index, left_right_max in index_to_max_height.items():
+    #     current_height = height[height_index]
+    #     water_trapped = min(left_right_max) - current_height
+    #     total_water += water_trapped
+    # return total_water
 
 
 
