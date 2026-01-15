@@ -12,14 +12,12 @@ def partition(arr, low, high):
     # elements to the left side. Elements from low to 
     # i are smaller after every iteration
     for k in range(low, high):
-        import pdb; pdb.set_trace()
         if arr[k] < pivot:
             i += 1
             swap(arr, i, k)
     
     # move pivot after smaller elements and
     # return its position
-    import pdb; pdb.set_trace()
     swap(arr, i + 1, high)
     return i + 1
 
