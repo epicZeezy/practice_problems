@@ -11,7 +11,7 @@ def swap(arr, index_1, index_2):
     arr[index_1], arr[index_2] = arr[index_2], arr[index_1]
 
 def partition(nums, left, right) -> int:
-    # Using right pivot so just assume all elements are smaller
+    # Using right pivot so just assume all elements are smaller and if not
     pivot = nums[right]
     i = left - 1
     for j in range(left, right):
@@ -25,6 +25,7 @@ def partition(nums, left, right) -> int:
 def quick_sort(nums, left, right):
     if left < right:
         pivot_idx = partition(nums, left, right)
+        # Look at 
         quick_sort(nums, left, pivot_idx - 1)
         quick_sort(nums, pivot_idx + 1, right)
     return nums
