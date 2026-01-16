@@ -19,20 +19,13 @@ def find_itinerary(tickets: List[List[str]]) -> List[str]:
         sorted_value = sorted(value)
         adjacency_list_airports[key] = sorted_value[::-1]
     # Get JFK as first neighbor since you know that's where you start. Will use DFS
-    home = "JFK"
-    # Get JFK neighbors and add to the stack
-    # neighbors = adjacency_list_airports[home]
-    visited = set()
-    # DFS. Will need to figure out how to keep track of paths. Not sure yet
-    neighbors = adjacency_list_airports[home]
-    visited = set()
-    jfk_path = []
-    stack = [home]
     result = []
     def dfs(node):
         while adjacency_list_airports[node]:
             next_destination = adjacency_list_airports[node].pop()
+            import pdb; pdb.set_trace()
             dfs(next_destination)
+        import pdb; pdb.set_trace()
         result.append(node)
     dfs("JFK")
     return result[::-1]
