@@ -24,26 +24,18 @@ def find_itinerary(tickets: List[List[str]]) -> List[str]:
     # neighbors = adjacency_list_airports[home]
     visited = set()
     # DFS. Will need to figure out how to keep track of paths. Not sure yet
+    neighbors = adjacency_list_airports[home]
+    visited = set()
     jfk_path = []
     stack = [home]
-    while stack:
-        current_location = stack.pop()
-        jfk_path.append(current_location)
-        current_location_neighbors = adjacency_list_airports[current_location]
-        if current_location_neighbors and current_location_neighbors[-1] not in visited:
-            stack.append(current_location_neighbors[-1])
-            visited.add((current_location, current_location_neighbors[-1]))
-            adjacency_list_airports[current_location].pop()
-        # if ticket_neighbor not in visited:
-        #     visited.add(ticket_neighbor)
-        #     _, destination = ticket_neighbor
-        #     jfk_path.append(destination)
-        #     # print(jfk_path)
-        #     current_neighbors = [(destination, neighbor) for neighbor in adjacency_list_airports[destination]]
-        #     current_neighbors.reverse()
-        #     neighbors.extend(current_neighbors)
-    print(jfk_path)
-    return jfk_path
+    result = []
+    def dfs(node):
+        while adjacency_list_airports[node]:
+            next_destination = adjacency_list_airports[node].pop()
+            dfs(next_destination)
+        result.append(node)
+    dfs("JFK")
+    return result[::-1]
 
     # Mark JFK as visited
     # For each JFK neighbor, get it's neighbors in constant time and add to the stack
