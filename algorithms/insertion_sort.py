@@ -6,7 +6,6 @@ def insertion_sort(arr):
         cursor_index = i - 1
         current_index = i
         while cursor_index >= 0 and arr[cursor_index] > number_to_find_position_for:
-            import pdb; pdb.set_trace()
             arr[cursor_index], arr[current_index] = arr[current_index], arr[cursor_index]
             current_index = cursor_index
             cursor_index -= 1
